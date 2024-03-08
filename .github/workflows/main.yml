@@ -1,3 +1,7 @@
+# Workflow Name: Deploy Lambda Functions
+# Description: This workflow handles the deployment of both Go and Node.js Lambda functions to AWS.
+# It detects the language of each function, builds, zips, and deploys them to AWS Lambda.
+
 name: Deploy Lambda Functions
 
 on:
@@ -54,11 +58,20 @@ jobs:
           readarray -t lambda_functions < ./${{ env.ARTIFACT_NAME }}.txt
           for lambda in "${lambda_functions[@]}"
           do
-            echo "Building and zipping $lambda"
-            cd /home/runner/work/lambdas/lambdas/lambdas/$lambda
-            GOOS=linux GOARCH=amd64 go build -o bootstrap
-            zip $lambda.zip bootstrap
-            cd -
+            if [ -f lambdas/$lambda/package.json ]; then # Check if Nodejs project
+              echo "Node.js project detected: $lambda"
+              cd /home/runner/work/lambdas/lambdas/lambdas/$lambda
+              npm install
+              # If you have a build script defined in package.json
+              npm run build
+              zip -r $lambda.zip .
+              cd -
+            else
+              echo "Building and zipping $lambda"
+              cd /home/runner/work/lambdas/lambdas/lambdas/$lambda
+              GOOS=linux GOARCH=amd64 go build -o bootstrap
+              zip $lambda.zip bootstrap
+              cd -
           done
 
       - name: Deploy Lambda function(s)
