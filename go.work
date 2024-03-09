@@ -1,0 +1,6 @@
+go 1.21.4
+
+use (
+	/home/ozzy/Desktop/capstone/test-updated-actions/lambda-actions-test/lambdas/get_transaction
+	/home/ozzy/Desktop/capstone/test-updated-actions/lambda-actions-test/lambdas/get_user
+)
