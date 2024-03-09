@@ -1,18 +1,22 @@
 # Serverless land!
 
-## If this is a new Lambda
+## When adding a new Lambda function
 
 Before pushing your code, make sure you make an empty Lambda project through the AWS Console.
-Make sure you use the provided.al2023 runtime, provided.al2 will cause runtime errors!
-You must name your new folder the same as the empty Lambda function you just created.
 
-## If you're updating a Lambda
+Create a new directory in the /lambda directory and give it the same name as the Lambda function you made through the console. You must name your new folder the same as the empty Lambda function you just created. The workflow uses the directory name to determine where to deploy the Lambda.
 
-Just push your code as normal.
+## If this is a new Go Lambda function
 
-## Workflow files
+Make sure you use the provided.al2023 runtime, provided.al2 will cause runtime errors! The workflow compiles the code to be compatiable with x86-64 architecture; make sure select that when creating a new Lambda in the AWS Console.
 
-When you submit a PR, a workflow file will run that will detect new or updated Lambdas. On merge with main, another workflow will deploy your code to AWS.
+## If this is a new NodeJS Lambda function
+
+Select the Node.js 20.x runtime when creating a new lambda in the console.
+
+## What does the workflow do?
+
+When you submit a PR, a workflow will run that will detect new or updated Lambdas. On merge with main, another workflow will deploy your code to AWS.
 
 ## If credentials are failing
 
