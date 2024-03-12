@@ -26,7 +26,7 @@ jobs:
           cat ${{ env.ARTIFACT_NAME }}.txt
 
       - name: Set up AWS CLI
-        uses: aws-actions/configure-aws-credentials@v4
+        uses: aws-actions/configure-aws-credentials@v3
         with:
           role-to-assume: arn:aws:iam::901195418002:role/GitHubAction-AssumeRoleWithAction
           role-session-name: Github Pull Request
