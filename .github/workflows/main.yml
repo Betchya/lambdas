@@ -32,11 +32,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v3
         with:
           role-to-assume: arn:aws:iam::901195418002:role/GitHubAction-AssumeRoleWithAction
-<<<<<<< HEAD
           role-session-name: Github-Merge
-=======
-          role-session-name: Github Pull Request
->>>>>>> a974c01eeef3a46506208d99e807ccfddd5bb987
           aws-region: us-west-2
 
       - name: Get PR Number
