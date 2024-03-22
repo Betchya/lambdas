@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
@@ -29,10 +29,10 @@ jobs:
           node-version: "20.x"
 
       - name: Set up AWS CLI
-        uses: aws-actions/configure-aws-credentials@v3
+        uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: arn:aws:iam::901195418002:role/GitHubAction-AssumeRoleWithAction
-          role-session-name: Github Pull Request
+          role-session-name: Github-Merge
           aws-region: us-west-2
 
       - name: Get PR Number
