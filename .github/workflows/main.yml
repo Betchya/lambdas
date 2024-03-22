@@ -87,6 +87,7 @@ jobs:
           done
 
       - name: Deploy Lambda function(s)
+        if: env.ARTIFACT_NAME && steps.get-pr.outputs.pr_number
         run: |
           readarray -t lambda_functions < ./${{ env.ARTIFACT_NAME }}.txt
           for lambda in "${lambda_functions[@]}"
