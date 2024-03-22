@@ -52,6 +52,10 @@ jobs:
       - name: Read updated Lambda list
         run: |
           readarray -t lambda_functions < ./${{ env.ARTIFACT_NAME }}.txt
+          if [ ${#lambda_functions[@]} -eq 0 ]; then
+            echo "No lambda functions to deploy."
+            exit 0
+          fi
           for lambda in "${lambda_functions[@]}"
           do
             echo "$lambda"
