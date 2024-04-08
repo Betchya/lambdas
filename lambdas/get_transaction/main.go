@@ -13,7 +13,7 @@ func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
 
 	if sourceIP == "" {
 		fmt.Println("Hello from get_transaction!!")
-		greeting = "Hello from get_transaction!!!\n"
+		greeting = "Hello from get_transaction!!!!\n"
 	} else {
 		greeting = fmt.Sprintf("Hello, %s!\n", sourceIP)
 	}
